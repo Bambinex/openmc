@@ -5,12 +5,6 @@
 
 int main()
 {
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        printf("problème initialisation GLAD");
-
-        return 2;
-    }
-
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -26,7 +20,13 @@ int main()
     }
 
     glfwMakeContextCurrent(window);
-    
+
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        printf("problème initialisation GLAD");
+
+        return 2;
+    }
+
     glViewport(0, 0, 800, 600);
 
     while (!glfwWindowShouldClose(window))
